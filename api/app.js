@@ -164,8 +164,9 @@ res.status(200).json({msg:"autenticado com sucesso", token})
 // Credenciais para conectar ao DB
 const dbUser = process.env.DB_USER
 const dbPassword = process.env.DB_PASS
+const dbUri = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.1deu4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
-mongoose.connect(`mongodb+srv://${dbUser}:${dbPassword}@cluster0.1deu4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`).then(() => {
-    console.log("Conectou ao Banco!")
-}).catch((err) => console.log(err))
+mongoose.connect(dbUri)
+  .then(() => console.log('Conectado ao MongoDB'))
+  .catch((error) => console.error('Erro ao conectar ao MongoDB:', error));
 
