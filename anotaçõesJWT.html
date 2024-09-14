@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anotações JWT</title>
+</head>
+<body>
+    <h1>Primeirta instalação</h1>
+    Antes de tudo, já devemos ter o NodeJS instalado na máquina para darmos inicio ao projeto.
+    Após isso, devemos criar o arquivo de configuração json. Para isso, basta inicializar o terminal no VSCode de inserir <strong>npm init -y</strong>. Isso inicializará todos os comandos necessarios para o JSON e com o -y, aplicará yes a todas as perguntas feitas.
+    <h1>Instalação das Bibliotecas</h1>
+    Para este projeto, utilizaremos as seguintes bibliotecas: <strong>bcrypt, dotenv, express, jsonwebtoken e mongoose </strong>. Para instalar, basta apenas inserir <strong>npm intall </strong>e o nome das bibliotecas
+    <h1>Nodemom</h1>
+    Nodemon é, basicamente, um <strong>LiveServer</strong> do VSCode. Ou seja, toda modificação feita no arquivo Node, será atualizada em tempo real.
+    Para abrirmos o servidor, primeiro instalamos o nodemon e definimos o save como dependência de desenvolvimento (<strong>npm install --save-dev nodemon</strong>)
+    <h2>inicialização Nodemon</h2>
+    Após isso, devemos abrir o arquivo package.json para ADICIONARMOS uma variável que conterá a função e o nome do arquivos que iremos trabalhar. 
+    Por exemplo, abriremos o arquivo .json. Adicionaremos uma variável <strong>"start": "nodemon app.js"</strong>. Depois, basta criarmos um novo arquivo que tenho o mesmo nome que demos (que no caso foi app) com o .js. 
+    *Basicamente falamos para o VSCode: Starte o arquivo app.js com Nodemon
+    Por fim, basta inserir no console npm run start (nome da variável)
+
+    <h1>criação Dotenv</h1>
+    dotenv é uma biblioteca para Node.js que carrega variáveis de ambiente de um arquivo .env para o objeto process.env. Isso permite gerenciar configurações sensíveis (como chaves de API, credenciais, etc.) de forma segura e centralizada, sem precisar definir essas variáveis diretamente no código ou no sistema operacional. <strong>Portanto, process.env é sempre global e disponível; dotenv é apenas uma ferramenta para carregar variáveis adicionais a partir de um arquivo .env específico.</strong>
+    Para utilizarmos esta biblioteca, temos apenas que criar na pasta raiz o arquivo <strong>.env</strong>. Após isso, usamos .config() no código para que 
+    A chamada a <strong>.config()</strong> é o que efetivamente carrega as variáveis de ambiente para o process.env. Sem essa chamada, as variáveis de ambiente definidas no arquivo .env não estariam disponíveis no seu código.
+    <br>
+    <strong>* Vale lembrar que o arquivo .env deve estar incluso no ".gitignore", já que possui informações senvível que não podem ser enviadas para o repositório</strong>
+    
+    <h1>Chamando requisições</h1>
+    Agora que instalamos tudo e já temos nosso arquivo para iniciar o projeto (app.js), vamos chamar todas as requisições. Para isso, basta apenas criarmos variáveis com <strong>require</strong> chamando nossas bibliotecas.
+    <code>
+        <span>require ('dotenv').config()</span>
+        <span>const express = require('express')</span>
+        <span>const mongoose = require('mongoose')</span>
+        <span>const bcrypt = require('bcrypt)</span>
+        <span>const jwt = require('jsonwebtoken')</span>
+    </code>
+</body>
+</html>
