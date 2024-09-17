@@ -167,7 +167,9 @@ const dbPassword = process.env.DB_PASS
 const dbUri = process.env.MONGODB_URI;
 
 mongoose.connect(dbUri)
-  .then(() => console.log('Conectado ao MongoDB'))
+  .then(() => {
+    // app.listen(3000)
+    console.log('Conectado ao MongoDB')})
   .catch((error) => console.error('Erro ao conectar ao MongoDB:', error));
 
 module.exports = app;
