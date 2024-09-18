@@ -16,9 +16,18 @@ app.use(cors());
 
 
 // Configurando o CORS para aceitar apenas dois domínios
-app.use(cors({
-    origin: ['https://projeto-8ovmom00c-ericks-projects-139bc263.vercel.app', 'https://erickcoutinhopf.com']
-  }));
+app.use((req, res, next) => {
+    const allowedOrigins = ['https://projeto-8ovmom00c-ericks-projects-139bc263.vercel.app', 'https://erickcoutinhopf.com'];
+    const origin = req.headers.origin;
+    
+    if (!origin || allowedOrigins.includes(origin)) {
+      // Permitir o Postman ou um dos domínios permitidos
+      cors()(req, res, next);
+    } else {
+      // Caso contrário, bloquear
+      cors({ origin: allowedOrigins })(req, res, next);
+    }
+  });
 
 
 
