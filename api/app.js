@@ -12,22 +12,22 @@ app.use(express.json())
 
 // CORS
 // Configurando o CORS para aceitar apenas dois domínios em produção
-app.use((req, res, next) => {
-    const allowedOrigins = ['https://projeto-8ovmom00c-ericks-projects-139bc263.vercel.app', 'https://erickcoutinhopf.com'];
-    const origin = req.headers.origin;
+// app.use((req, res, next) => {
+//     const allowedOrigins = ['https://projeto-8ovmom00c-ericks-projects-139bc263.vercel.app', 'https://erickcoutinhopf.com'];
+//     const origin = req.headers.origin;
 
-    if (process.env.NODE_ENV === 'production') {
-        // Em produção, verificar se a origem é permitida
-        if (!origin || allowedOrigins.includes(origin)) {
-            return cors({ origin })(req, res, next);
-        } else {
-            return res.status(403).json({ msg: 'Acesso negado ao CORS' });
-        }
-    } else {
-        // Em desenvolvimento, permitir qualquer origem
-        return cors()(req, res, next);
-    }
-});
+//     if (process.env.NODE_ENV === 'production') {
+//         // Em produção, verificar se a origem é permitida
+//         if (!origin || allowedOrigins.includes(origin)) {
+//             return cors({ origin })(req, res, next);
+//         } else {
+//             return res.status(403).json({ msg: 'Acesso negado ao CORS' });
+//         }
+//     } else {
+//         // Em desenvolvimento, permitir qualquer origem
+//         return cors()(req, res, next);
+//     }
+// });
 
 
 
