@@ -1,5 +1,6 @@
 require ('dotenv').config()
 const express = require ('express')
+const cors = require('cors')
 const mongoose = require ('mongoose')
 const bcrypt = require ('bcryptjs')
 const jwt = require('jsonwebtoken')
@@ -9,14 +10,28 @@ const app = express()
 // Configurando o express para ler Json
 app.use(express.json())
 
+// CORS
+// Habilitando CORS para todas as requisições
+app.use(cors());
+
+
+// Configurando o CORS para aceitar apenas dois domínios
+app.use(cors({
+    origin: ['https://projeto-8ovmom00c-ericks-projects-139bc263.vercel.app', 'https://erickcoutinhopf.com']
+  }));
+
+
+
 //Modelos
 const User = require('../modelos/User')
 
-// Open route
 
+
+// Open route
 app.get('/', (req, res) =>{
     res.status(200).json({msg: 'bem vindo a nossa api!'})
 })
+
 
 
 //Private Route
