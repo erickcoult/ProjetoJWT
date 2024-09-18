@@ -11,23 +11,23 @@ const app = express()
 app.use(express.json())
 
 // CORS
-// Habilitando CORS para todas as requisições
-app.use(cors());
-
-
-// Configurando o CORS para aceitar apenas dois domínios
+// Configurando o CORS para aceitar apenas dois domínios em produção
 app.use((req, res, next) => {
     const allowedOrigins = ['https://projeto-8ovmom00c-ericks-projects-139bc263.vercel.app', 'https://erickcoutinhopf.com'];
     const origin = req.headers.origin;
-    
-    if (!origin || allowedOrigins.includes(origin)) {
-      // Permitir o Postman ou um dos domínios permitidos
-      cors()(req, res, next);
+
+    if (process.env.NODE_ENV === 'production') {
+        // Em produção, verificar se a origem é permitida
+        if (!origin || allowedOrigins.includes(origin)) {
+            return cors({ origin })(req, res, next);
+        } else {
+            return res.status(403).json({ msg: 'Acesso negado ao CORS' });
+        }
     } else {
-      // Caso contrário, bloquear
-      cors({ origin: allowedOrigins })(req, res, next);
+        // Em desenvolvimento, permitir qualquer origem
+        return cors()(req, res, next);
     }
-  });
+});
 
 
 
