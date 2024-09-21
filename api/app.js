@@ -13,7 +13,7 @@ app.use(express.json())
 // CORS
 // Configurando o CORS para aceitar apenas dois domínios em produção
 // app.use((req, res, next) => {
-//     const allowedOrigins = ['https://projeto-8ovmom00c-ericks-projects-139bc263.vercel.app', 'https://erickcoutinhopf.com'];
+//     const allowedOrigins = ['https://projeto-jwt.vercel.app', 'https://erickcoutinhopf.com'];
 //     const origin = req.headers.origin;
 
 //     if (process.env.NODE_ENV === 'production') {
