@@ -1,33 +1,17 @@
 require ('dotenv').config()
 const express = require ('express')
+const cors = require('cors')
 const mongoose = require ('mongoose')
 const bcrypt = require ('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 const app = express()
 
+// Configura o CORS
+app.use(cors());
+
 // Configurando o express para ler Json
 app.use(express.json())
-
-// CORS
-// Configurando o CORS para aceitar apenas dois domínios em produção
-// app.use((req, res, next) => {
-//     const allowedOrigins = ['https://projeto-jwt.vercel.app', 'https://erickcoutinhopf.com'];
-//     const origin = req.headers.origin;
-
-//     if (process.env.NODE_ENV === 'production') {
-//         // Em produção, verificar se a origem é permitida
-//         if (!origin || allowedOrigins.includes(origin)) {
-//             return cors({ origin })(req, res, next);
-//         } else {
-//             return res.status(403).json({ msg: 'Acesso negado ao CORS' });
-//         }
-//     } else {
-//         // Em desenvolvimento, permitir qualquer origem
-//         return cors()(req, res, next);
-//     }
-// });
-
 
 
 //Modelos
