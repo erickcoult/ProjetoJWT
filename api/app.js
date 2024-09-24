@@ -70,7 +70,7 @@ app.get('/user/:id',checktoken, async (req,res) =>{
 // Registrando usuário
 app.post('/auth/register', async (req, res) =>{
 
-    const {name, email, password, confirmpassword} = req.body
+    const { name, email, password, confirmPassword } = req.body
 
     // validações 
     if (!name){
@@ -85,7 +85,7 @@ app.post('/auth/register', async (req, res) =>{
         return res.status(422).json({msg : 'A senha é obrigatório'})
     }
 
-    if (password !== confirmpassword){
+    if (password !== confirmPassword){
         return res.status(422).json({msg : 'As senhas não conferem'})
     }
 
