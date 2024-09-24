@@ -160,7 +160,7 @@ try{
     secret, 
 )
 
-res.status(200).json({msg:"autenticado com sucesso", token})
+res.status(200).json({msg:"autenticado com sucesso", token, name: user.name})
 
 
 }catch(error) {
