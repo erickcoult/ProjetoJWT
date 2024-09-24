@@ -175,6 +175,13 @@ const dbUser = process.env.DB_USER
 const dbPassword = process.env.DB_PASS
 const dbUri = process.env.MONGODB_URI;
 
+// Opções de conexão para pooling
+const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    maxPoolSize: 10, // Tamanho máximo do pool de conexões
+  };
+
 mongoose.connect(dbUri)
   .then(() => {
     // app.listen(3000)
